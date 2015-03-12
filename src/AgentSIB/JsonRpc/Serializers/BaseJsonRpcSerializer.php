@@ -29,6 +29,11 @@ class BaseJsonRpcSerializer implements JsonRpcSerializerInterface
         if ($response == null) {
             return '';
         }
+        
+        if (defined('JSON_UNESCAPED_UNICODE')) {
+            return json_encode($response, JSON_UNESCAPED_UNICODE);
+        }
+        
         return json_encode($response);
     }
 }
